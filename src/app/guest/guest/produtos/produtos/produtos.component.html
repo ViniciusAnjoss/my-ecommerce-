@@ -1,0 +1,45 @@
+<div class="container-fluid">
+
+    <button class="btn btn-primary" (click)="finalizarCompra()"> Finalizar Compra </button>
+  
+    <select class="form-control" [(ngModel)]="categoriaSelected" (change)="onCategoriaChange()" >
+        <option value="-1">SELECIONE</option>
+        <option *ngFor="let c of categorias" [value]="c.idCategoria">{{c.nome}}</option>
+    </select>
+  
+    <div class='row'>
+     <div class="col-sm-16">
+     <div class="card-group card">
+        <div class='col-6 text-justify' *ngFor="let dados of produtos" style="width: 18rem;margin-top: 10px;margin-left: 15px;">
+  
+            <div class="card border-dark mb-5 card text-white bg-primary mb-3" >
+                <img class="card-img-top" src=""
+                    alt="fundo">
+                <div class="card-body">
+                    <h5 class="card-title">{{ dados.nome }}</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: {{ dados.idProduto }}</li>
+                    </ul>
+                    <p class="card-text">Descrição: {{ dados.descricao }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <p *ngFor="let c of dados.categorias">
+                            {{ c.nome }}
+                    </li>
+                </ul>
+  
+                <div class="card-body">
+                    <p>R$ {{ dados.preco }}</p>
+                    <input type="number" class="form-control input" (change)="onQuantidadeChange(dados, $event)" placeholder="Quantidade"  >
+                    <a href="#" class="btn btn-outline-warning">Comprar </a>&nbsp;
+  
+                </div>
+            </div>
+  
+  
+        </div>
+     </div>
+    </div>
+    </div>
+  </div>
